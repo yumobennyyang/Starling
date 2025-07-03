@@ -20,7 +20,7 @@
         body {
 
             margin: 0;
-            filter: contrast(5);
+            filter: contrast(3);
 
             mix-blend-mode: darken;
         }
@@ -55,12 +55,14 @@
 
         .navbar-logo img {
             height: 30px;
+            opacity:0.9;
 
         }
 
 
         .navbar-logo:hover .logo {
-            content: url('./public/starling_logo_hovered.svg');
+            content: url('./public/starling_logo.svg');
+            opacity:0.9;
         }
 
         .navbar-links {
@@ -71,7 +73,7 @@
 
         .navbar-links a {
             text-decoration: none;
-            color: black;
+            color: gray;
             font-size: 16px;
             font-family: 'Lora', serif;
             font-weight: 400;
