@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+
+    <meta charset="utf-8">
+    <title>Starling</title>
+    <style>
+        html {
+            background-color: #dddddd;
+        }
+
+        body {
+
+            margin: 0;
+            filter: contrast(5);
+
+            mix-blend-mode: darken;
+        }
+
+
+
+        .bebas-neue-regular {
+            font-family: "Bebas Neue", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+
+        }
+
+        .lora-regular {
+            font-family: "Lora", serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: calc(100% - 70px);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 40px 20px 30px;
+            z-index: 1000;
+        }
+
+        .navbar-logo img {
+            height: 30px;
+
+        }
+
+
+        .navbar-logo:hover .logo {
+            content: url('./public/starling_logo_hovered.svg');
+        }
+
+        .navbar-links {
+            display: flex;
+            gap: 60px;
+            justify-content: flex-end;
+        }
+
+        .navbar-links a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+            font-family: 'Lora', serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .navbar-links a:hover {
+            color: #ff3800;
+        }
+
+        .title {
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            color: #fff;
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+
+            -webkit-text-stroke-color: white;
+            -webkit-text-stroke-width: 1px;
+
+            mix-blend-mode: difference;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 20px rgba(0, 0, 0, 0), 0 0 30px rgba(0, 0, 0, 0);
+            z-index: 10;
+
+
+
+        }
+
+        .orange {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            color: #ff3800;
+            text-align: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            mix-blend-mode: multiply;
+            z-index: 20;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script type="module" src="/main.js"></script>
+
+    <div class="navbar">
+        <div class="navbar-logo">
+            <img src="./public/starling_logo.svg" alt="Logo" class="logo">
+        </div>
+        <div class="navbar-links">
+            <a href="#manifesto">Manifesto</a>
+            <a href="#projects">Projects</a>
+            <a href="#team">Team</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+    <div class="title">
+        STARLING
+    </div>
+    <div class="orange">
+        STARLING
+    </div>
+</body>
+
+</html>
