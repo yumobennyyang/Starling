@@ -16,12 +16,12 @@ animate();
 
 function init() {
     scene = new THREE.Scene();
-    scene.background = new THREE.Color(0xdddddd);
+    scene.background = null;
 
     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 100;
 
-    renderer = new THREE.WebGLRenderer();
+    renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
@@ -29,7 +29,7 @@ function init() {
     velocities = new Float32Array(birdCount * 3);
 
     for (let i = 0; i < birdCount; i++) {
-        positions[i * 3] = (Math.random() - 0.5) * 80; // tighter initial spread
+        positions[i * 3] = (Math.random() - 0.5) * 80;
         positions[i * 3 + 1] = (Math.random() - 0.5) * 80;
         positions[i * 3 + 2] = (Math.random() - 0.5) * 80;
 
