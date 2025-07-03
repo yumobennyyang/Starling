@@ -8,7 +8,7 @@ const perceptionRadius = 20;
 const maxSpeed = 1;
 const maxForce = 0.08;
 const alignmentWeight = 1.0;
-const cohesionWeight = 0.9;     
+const cohesionWeight = 0.9;
 const separationWeight = 1.1;
 
 init();
@@ -121,12 +121,30 @@ function flock() {
 
         pos.add(vel);
 
+        const boundaryLimit = 40;
+        const boundaryMargin = 10; // Start applying boundary force within 10 units of edge
+        const boundaryForce = 0.05;
+
         ['x', 'y', 'z'].forEach((axis, idx) => {
-            if (pos[axis] > 40) vel[axis] -= 0.1;
-            if (pos[axis] < -40) vel[axis] += 0.1;
+            if (pos[axis] > boundaryLimit - boundaryMargin) {
+                let distanceToEdge = boundaryLimit - pos[axis];
+                vel[axis] -= boundaryForce * (1 - distanceToEdge / boundaryMargin);
+            } else if (pos[axis] < -boundaryLimit + boundaryMargin) {
+                let distanceToEdge = pos[axis] + boundaryLimit;
+                vel[axis] += boundaryForce * (1 - distanceToEdge / boundaryMargin);
+            }
+        });
+
+        // Apply gentle damping to make flight less linear and more fluid
+        vel.multiplyScalar(0.95);
+
+        // Update positions and velocities arrays
+        ['x', 'y', 'z'].forEach((axis, idx) => {
             positions[i * 3 + idx] = pos[axis];
             velocities[i * 3 + idx] = vel[axis];
         });
+
+
     }
 }
 
@@ -137,4 +155,5 @@ function getVector(index, array = positions) {
         array[index * 3 + 2]
     );
 }
+
 
