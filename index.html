@@ -8,6 +8,8 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
+        
+        <link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap" rel="stylesheet">
 
 
     <meta charset="utf-8">
@@ -36,6 +38,8 @@
             font-style: normal;
 
         }
+        
+        
 
         .lora-regular {
             font-family: "Lora", serif;
@@ -58,7 +62,7 @@
 
         .navbar-logo img {
             height: 30px;
-            opacity: 0.2;
+            opacity: 1;
 
         }
 
@@ -79,9 +83,10 @@
             color: #000000;
             font-size: 16px;
             font-family: 'Lora', serif;
+            
             font-weight: 400;
             font-style: normal;
-            opacity:0.3;
+            opacity:1;
         }
 
         .navbar-links a:hover {
@@ -93,24 +98,63 @@
 
 
             position: absolute;
-            top: 49%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -45%);
-            font-size: 5em;
             color: #fff;
-            text-align: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: 400;
-            font-style: normal;
-
-            -webkit-text-stroke-color: white;
-            -webkit-text-stroke-width: 1px;
-
+            text-align: left;
             mix-blend-mode: difference;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 20px rgba(0, 0, 0, 0), 0 0 30px rgba(0, 0, 0, 0);
             z-index: 10;
+            
+
+        }
+        
+        .term {
+        font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            font-style: normal;
+            font-size: 8em;
+                        -webkit-text-stroke-color: white;
+            -webkit-text-stroke-width: 1px;
+            margin-bottom: -10px;
+        }
+        
+        
+        .pronunciation{
+         font-size: 16px;
+            font-family: 'Gambarino', serif;
+            font-weight: 400;
+            font-style: normal;
+            padding-bottom: 4px;
+            transform: translateX(3px)
+        }
+        
+         .part-of-speech{
+            font-weight: 700;
+            font-style: italic;
+        }
+        
+                 .definition{
+                 max-width: 365px;
+                 margin-top: 4px;
+         font-size: 12px;
+            font-family: 'Gambarino', serif;
+            font-weight: 400;
+            font-style: normal;
+            transform: translateX(3px)
+        }
+        
+        .white {
 
 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+            color: #fff;
+            text-align: left;   
+            z-index: -10;
 
         }
 
@@ -118,17 +162,19 @@
 
             
             position: absolute;
-            top: 49%;
+            top: 50%;
             left: 50%;
             transform: translate(-50%, -45%);
-            font-size: 5em;
             color: #ff3800;
-            text-align: center;
-            font-family: 'Bebas Neue', sans-serif;
-            font-weight: 400;
-            font-style: normal;
+            text-align: left;
+
             mix-blend-mode: plus-darker;
             z-index: 20;
+        }
+        
+        .hide {
+        opacity: 0;
+        
         }
     </style>
 </head>
@@ -148,12 +194,35 @@
             <a href="#contact">Contact</a>
         </div>
     </div>
+    
+        <div class="white">
+        <div class="term">STARLING</div>
+        
+        
+        <div class="pronunciation hide">[ /ˈstärliNG/ ] <span class="part-of-speech">noun</span></div>
+        <div class="definition hide">1. An entity within a living system where individual units coalesce into fluid formations of collective intelligence.</div>
+   <div class="definition hide">2. One of a murmuration.</div>
+    </div>
+    
+    
     <div class="title">
-        STARLING
+        <div class="term">STARLING</div>
+        
+        
+        <div class="pronunciation">[ /ˈstärliNG/ ] <span class="part-of-speech">noun</span></div>
+        <div class="definition">1. An entity within a living system where individual units coalesce into fluid formations of collective intelligence.</div>
+   <div class="definition">2. One of a murmuration.</div>
     </div>
+    
     <div class="orange">
-        STARLING
+        <div class="term">STARLING</div>
+        
+        
+        <div class="pronunciation hide">[ /ˈstärliNG/ ] <span class="part-of-speech">noun</span></div>
+        <div class="definition hide">1. An entity within a living system where individual units coalesce into fluid formations of collective intelligence.</div>
+   <div class="definition hide">2. One of a murmuration.</div>
     </div>
+
 </body>
 
 </html>
