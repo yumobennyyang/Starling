@@ -82,7 +82,7 @@
 
         #starling {
 
-            background-image: url("/starling_background.png");
+            background-image: url("public/starling_background.png");
 
             background-size: cover;
             background-repeat: no-repeat;
@@ -92,7 +92,7 @@
         #penguin {
 
 
-            background-image: url("/penguin_background_2.png");
+            background-image: url("public/penguin_background_2.png");
 
             background-size: cover;
             background-repeat: no-repeat;
@@ -103,7 +103,7 @@
 
         #fish {
 
-            background-image: url("/fish_background.png");
+            background-image: url("public/fish_background.png");
 
             background-size: cover;
             background-repeat: no-repeat;
@@ -274,9 +274,9 @@
         function updateInfoContent() {
             const activeView = document.body.className.replace('-active', '');
             let videoSrc = '';
-            if (activeView === 'starling') videoSrc = 'bird.mov';
-            if (activeView === 'penguin') videoSrc = 'penguin.mov';
-            if (activeView === 'fish') videoSrc = 'fish.mov';
+            if (activeView === 'starling') videoSrc = 'public/bird.mov';
+            if (activeView === 'penguin') videoSrc = 'public/penguin.mov';
+            if (activeView === 'fish') videoSrc = 'public/fish.mov';
 
             // Update text content
             if (infoContent[activeView]) {
