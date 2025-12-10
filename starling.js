@@ -1,6 +1,6 @@
 // Boids Murmuration Simulation in Three.js with Cursor Interaction
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
+import * as THREE from 'three';
 
 let scene, camera, renderer, boids, positions, velocities, specialBoid;
 let specialBoidIndex = 0; // First boid is special

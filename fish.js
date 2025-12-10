@@ -1,7 +1,7 @@
 // Trevally Tornado Simulation - Helical Conveyor Model
 // Bigeye trevally courtship: helical ascent -> peel at apex -> peripheral descent -> re-entry at base
 
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.161.0/build/three.module.js';
+import * as THREE from 'three';
 
 // ===== PARAMETERS (OBSERVATION-ALIGNED) =====
 
