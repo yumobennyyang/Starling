@@ -8,38 +8,119 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
-        
-        <link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap" rel="stylesheet">
 
+    <link href="https://api.fontshare.com/v2/css?f[]=gambarino@400&display=swap" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 
     <meta charset="utf-8">
-    <title>Starling</title>
+    <title>Pixel Ecologies</title>
     <style>
         html {
-            background: linear-gradient(to top, #D09F6D 0%, #F9EAC0 25%, #F4F5E8 40%, #C7CFD7 60%, #A8ADC0 100%);
+
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-attachment: fixed;
         }
 
         body {
-
             margin: 0;
-            /* filter: contrast(3);*/
-
             background: transparent;
-
-            
+            overflow: hidden;
         }
 
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 9px 10px;
+            z-index: 1000;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        nav a {
+            /* font-family: "Bebas Neue", sans-serif; */
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            color: #000;
+            opacity: 0.3;
+            text-decoration: none;
+            cursor: pointer;
+
+        }
+
+        /* Black text for starling and penguin */
+        body.starling-active nav a,
+        body.penguin-active nav a {
+            color: #000;
+        }
+
+        /* White text when fish is active */
+        body.fish-active nav a {
+            color: #fff;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 1;
+        }
+
+        #starling,
+        #penguin,
+        #fish {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        #starling {
+
+            background-image: url("/starling_background.png");
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #penguin {
 
 
+            background-image: url("/penguin_background_2.png");
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+
+
+        }
+
+        #fish {
+
+            background-image: url("/fish_background.png");
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+        }
+
+        #starling.active,
+        #penguin.active,
+        #fish.active {
+            display: block;
+        }
 
         .bebas-neue-regular {
             font-family: "Bebas Neue", sans-serif;
             font-weight: 400;
             font-style: normal;
-
         }
-        
-        
 
         .lora-regular {
             font-family: "Lora", serif;
@@ -48,180 +129,204 @@
             font-style: normal;
         }
 
-        .navbar {
+        .copyright {
             position: fixed;
-            top: 0;
-            width: calc(100% - 70px);
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 40px 20px 30px;
+            bottom: 0;
+            right: 0;
+            padding: 8px 10px;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            color: #000;
             z-index: 1000;
-        }
-
-        .navbar-logo img {
-            height: 30px;
-            opacity: 1;
 
         }
 
-
-        .navbar-logo:hover .logo {
-            content: url('./public/starling_logo_hovered.svg');
-            opacity: 1;
+        /* Black text for starling and penguin */
+        body.starling-active .copyright,
+        body.penguin-active .copyright {
+            color: #000;
+            opacity: 0.4;
         }
 
-        .navbar-links {
-            display: flex;
-            gap: 60px;
-            justify-content: flex-end;
-        }
-
-        .navbar-links a {
-            text-decoration: none;
-            color: #000000;
-            font-size: 16px;
-            font-family: 'Lora', serif;
-            
-            font-weight: 400;
-            font-style: normal;
-            opacity:1;
-        }
-
-        .navbar-links a:hover {
-            color: #ff3800;
-            opacity:1;
-        }
-
-        .title {
-
-
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -45%);
+        /* White text when fish is active */
+        body.fish-active .copyright {
             color: #fff;
-            text-align: left;
-            mix-blend-mode: difference;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0), 0 0 20px rgba(0, 0, 0, 0), 0 0 30px rgba(0, 0, 0, 0);
-            z-index: 10;
-            
+            opacity: 0.3;
+        }
 
+        #info-toggle {
+            position: fixed;
+            top: 9px;
+            right: 10px;
+            z-index: 1001;
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            cursor: pointer;
+            opacity: 0.3;
+            user-select: none;
         }
-        
-        .term {
-        font-family: 'Bebas Neue', sans-serif;
-            font-weight: 400;
-            font-style: normal;
-            font-size: 8em;
-                        -webkit-text-stroke-color: white;
-            -webkit-text-stroke-width: 1px;
-            margin-bottom: -10px;
-        }
-        
-        
-        .pronunciation{
-         font-size: 16px;
-            font-family: 'Gambarino', serif;
-            font-weight: 400;
-            font-style: normal;
-            padding-bottom: 4px;
-            transform: translateX(3px)
-        }
-        
-         .part-of-speech{
-            font-weight: 700;
-            font-style: italic;
-        }
-        
-                 .definition{
-                 max-width: 365px;
-                 margin-top: 4px;
-         font-size: 12px;
-            font-family: 'Gambarino', serif;
-            font-weight: 400;
-            font-style: normal;
-            transform: translateX(3px)
-        }
-        
-        .white {
 
+        #info-toggle:hover {
+            opacity: 1;
+        }
 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -45%);
+        body.starling-active #info-toggle,
+        body.penguin-active #info-toggle {
+            color: #000;
+        }
+
+        body.fish-active #info-toggle {
             color: #fff;
-            text-align: left;   
-            z-index: -10;
-
         }
 
-        .orange {
-
-            
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -45%);
-            color: #ff3800;
-            text-align: left;
-
-            mix-blend-mode: plus-darker;
-            z-index: 20;
+        #info-panel {
+            position: fixed;
+            top: 40px;
+            right: 10px;
+            width: 300px;
+            display: none;
+            z-index: 1000;
+            text-align: right;
         }
-        
-        .hide {
-        opacity: 0;
-        
+
+        #info-panel video {
+            width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            margin-top: -8px;
+            display: block;
+        }
+
+        #info-panel p {
+            font-family: "Inter", sans-serif;
+            font-size: 12px;
+            margin-bottom: 10px;
+            margin-top: 0;
+            line-height: 1.4;
+        }
+
+        body.starling-active #info-panel p,
+        body.penguin-active #info-panel p {
+            color: #000;
+        }
+
+        body.fish-active #info-panel p {
+            color: #fff;
         }
     </style>
 </head>
 
 <body>
 
-    <script type="module" src="main.js"></script>
+    <nav>
+        <a href="#" class="nav-link active" data-view="starling">01 COMMON STARLING</a>
+        <a href="#" class="nav-link" data-view="penguin">02 EMPEROR PENGUIN</a>
+        <a href="#" class="nav-link" data-view="fish">03 BIGEYE TREVALLY</a>
+    </nav>
 
-    <div class="navbar">
-        <div class="navbar-logo">
-            <img src="./public/starling_logo.svg" alt="Logo" class="logo">
+    <div id="info-toggle">INFO</div>
+
+    <div id="info-panel">
+        <video id="info-video" muted loop autoplay playsinline>
+            <source src="" type="video/mp4">
+        </video>
+        <div id="info-text">
+            <p>Starlings are a type of bird that fly around in groups composed of a few hundred to a few million units
+                that form these very surreal and fluid meshes in the sky. The murmuration becomes a live choreography.
+            </p>
+            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat.</p>
         </div>
-        <div class="navbar-links">
-            <a href="#manifesto">Manifesto</a>
-            <a href="#projects">Projects</a>
-            <a href="#team">Team</a>
-            <a href="#contact">Contact</a>
-        </div>
     </div>
-    
-        <div class="white">
-        <div class="term">STARLING</div>
-        
-        
-        <div class="pronunciation hide">[ /ˈstärliNG/ ] <span class="part-of-speech">noun</span></div>
-        <div class="definition hide">1. An entity within a living system where individual units coalesce into fluid formations of collective intelligence.</div>
-   <div class="definition hide">2. One of a murmuration.</div>
-    </div>
-    
-    
-    <div class="title">
-        <div class="term">STARLING</div>
-        
-        
-        <div class="pronunciation">[ /ˈstärliNG/ ] <span class="part-of-speech">noun</span></div>
-        <div class="definition">1. An entity within a living system where individual units coalesce into fluid formations of collective intelligence.</div>
-   <div class="definition">2. One of a murmuration.</div>
-    </div>
-    
-    <div class="orange">
-        <div class="term">STARLING</div>
-        
-        
-        <div class="pronunciation hide">[ /ˈstärliNG/ ] <span class="part-of-speech">noun</span></div>
-        <div class="definition hide">1. An entity within a living system where individual units coalesce into fluid formations of collective intelligence.</div>
-   <div class="definition hide">2. One of a murmuration.</div>
-    </div>
+
+    <div class="copyright">BENNYYYANG.COM</div>
+
+    <div id="starling" class="active"></div>
+    <div id="penguin"></div>
+    <div id="fish"></div>
+
+    <script type="module" src="starling.js"></script>
+    <script src="penguins.js"></script>
+    <script type="module" src="fish.js"></script>
+
+    <script>
+        // Info panel logic
+        const infoToggle = document.getElementById('info-toggle');
+        const infoPanel = document.getElementById('info-panel');
+        const infoVideo = document.getElementById('info-video');
+        const infoText = document.getElementById('info-text');
+
+        const infoContent = {
+            starling: `
+                <p>Starlings are a type of bird that fly around in groups composed of a few hundred to a few million units that form these very surreal and fluid meshes in the sky. The murmuration becomes a live choreography.</p>
+                <p>Your cursor interacts with the starlings. Birds near this ray are repelled away from it, and you are a disturbance passing through the flock. The closer a bird is to the ray, the stronger the repulsion force, and their speed limit also increases, allowing them to flee faster.</p>
+            `,
+            penguin: `
+                <p>Emperor penguins, when huddling, would keep switching positions to ensure every member gets a chance to be in the center, the warmest spot. They maintain warmth through spiral-like rotations: a form of thermal democracy. As those on the outside take the brunt of the cold, those on the inside take tiny steps that move the huddle in waves. The pack continues to shift and rotate. Here, information is warmth: the screen becomes a thermal ecology.</p>
+                <p>Your cursor interacts with the penguins. It sends out a breeze of cold wind that can be as low as -130 fahrenheit in Antarctica. Penguins respond by attempting to increase their body temperature. They pull themselves closer to neighbors, stay nearer to the center, and linger in tight formations. Ones that have separated out from the group would immediately return to the main huddle.</p>
+            `,
+            fish: `
+                <p>Underwater, Bigeye Jacks form vortical schools - collective movement shaped by drag and flow. They form into tornados. Local flow fields bend their paths, creating self-sustaining turbulence.</p>
+                <p>Your cursor interacts with the trevallies. When you approaches the tornado, the trevallies swim faster in its spiral movement, they also become more erratic and the formation of the tornado becomes less rigid. You are a threat, and the closer you get, the more nervous the fish become.</p>
+            `
+        };
+
+        function updateInfoContent() {
+            const activeView = document.body.className.replace('-active', '');
+            let videoSrc = '';
+            if (activeView === 'starling') videoSrc = 'bird.mov';
+            if (activeView === 'penguin') videoSrc = 'penguin.mov';
+            if (activeView === 'fish') videoSrc = 'fish.mov';
+
+            // Update text content
+            if (infoContent[activeView]) {
+                infoText.innerHTML = infoContent[activeView];
+            }
+
+            // Check if src is actually changing to avoid flicker/reload if not needed
+            // Note: infoVideo.src returns absolute path, so we check if it ends with our file
+            if (!infoVideo.src.endsWith(videoSrc)) {
+                infoVideo.src = videoSrc;
+                infoVideo.load();
+                infoVideo.play().catch(e => console.log("Autoplay prevented", e));
+            }
+        }
+
+        infoToggle.addEventListener('click', () => {
+            if (infoPanel.style.display === 'block') {
+                infoPanel.style.display = 'none';
+            } else {
+                updateInfoContent();
+                infoPanel.style.display = 'block';
+            }
+        });
+
+        // Navigation toggle
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const view = link.getAttribute('data-view');
+
+                // Update active states
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                document.querySelectorAll('#starling, #penguin, #fish').forEach(v => v.classList.remove('active'));
+                document.getElementById(view).classList.add('active');
+
+                // Update body class for text color control
+                document.body.className = view + '-active';
+
+                // Update info panel if open
+                if (infoPanel.style.display === 'block') {
+                    updateInfoContent();
+                }
+            });
+        });
+
+        // Set initial body class
+        document.body.className = 'starling-active';
+    </script>
 
 </body>
 
